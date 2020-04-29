@@ -65,7 +65,7 @@ In the terminal start your container with the following command (in the DockerCo
 
 Options: 
 - change port: (i.e. ``2351`` can be ``777``, etc)
-- change which GPU to use (check which GPU you want to use in the terminal by running ``nvidia-smi``)
+- **change which GPU to use** (check which GPU you want to use in the terminal by running ``nvidia-smi``)
 - change the name: --name ``containername``  can be anything you want
 - change the home folder:``-e USER_HOME=$HOME/DeepLabCut``  (i.e. this can be ``-e USER_HOME=$HOME/whateveryouwant``)
 
@@ -74,7 +74,7 @@ Options:
 mkdir -p $HOME/DeepLabCut # or $HOME/whateveryouwant (see the options above)
 
 # Run the docker container
-GPU=1 bash ./dlc-docker run -d -p 2351:8888 -e USER_HOME=$HOME/DeepLabCut --name containername dlc_username/dlcdocker
+GPU=0 bash ./dlc-docker run -d -p 2351:8888 -e USER_HOME=$HOME/DeepLabCut --name containername dlc_username/dlcdocker
 ```
 Do not run this with sudo. 
 
