@@ -66,7 +66,7 @@ In the terminal start your container with the following command (in the DockerCo
 Options: 
 - change port: (i.e. ``2351`` can be ``777``, etc)
 - **change which GPU to use** (check which GPU you want to use in the terminal by running ``nvidia-smi``)
-- change the name: --name ``containername``  can be anything you want
+- change the name: --name ``containername``  can be anything you want (Changed to DeepLabCut. --Ray)
 - change the home folder:``-e USER_HOME=$HOME/DeepLabCut``  (i.e. this can be ``-e USER_HOME=$HOME/whateveryouwant``)
 
 ```
@@ -74,13 +74,13 @@ Options:
 mkdir -p $HOME/DeepLabCut # or $HOME/whateveryouwant (see the options above)
 
 # Run the docker container
-GPU=0 bash ./dlc-docker run -d -p 2351:8888 -e USER_HOME=$HOME/DeepLabCut --name containername dlc_username/dlcdocker
+GPU=0 bash ./dlc-docker run -d -p 2351:8888 -e USER_HOME=$HOME/DeepLabCut --name DeepLabCut dlc_username/dlcdocker
 ```
 Do not run this with sudo. 
 
  - Enter the container via the terminal (to get terminal access in container):
 ```
-docker exec --user $USER -it containername /bin/bash
+docker exec --user $USER -it DeepLabCut /bin/bash
 ```
 Access your linked (internal home) directory:
 ```
@@ -105,7 +105,7 @@ Now you have an Ubuntu with **Python3** and a GPU-installed with **Tensorflow 1.
 This container could also be used for other things besides DeepLabCut, so you might want to utlitize the features in Jupyter, i.e. you can also go into the terminal separately via a browser interface (i.e Google Chrome + a Jupyter Notebook) to check out what's inside. For this, go to the port you specified, i.e. in our example enter http://localhost:2351 in Google Chrome.
 Get the token for entry: back in the terminal, look at the docker log; copy and paste the value after "token=":
 
-    $ docker logs containername 
+    $ docker logs DeepLabCut 
    
 <p align="center">
 <img src="docs/enterContainerwithJupyter.png" width="90%">
@@ -125,17 +125,17 @@ Check which containers are running:
     $ docker ps 
 You can stop a container: 
 
-    $ docker stop containername 
+    $ docker stop DeepLabCut 
 
 You can re-start your container:
 
-    $ docker start containername
+    $ docker start DeepLabCut
 
 After stopping you can remove old containers: 
 
-    $ docker rm containername
+    $ docker rm DeepLabCut
 
 (once removed, it can be created again): 
 ```
-GPU=1 bash ./dlc-docker run -d -p 2351:8888 -e USER_HOME=$HOME/DeepLabCut --name containername dlc_username/dlcdocker
+GPU=1 bash ./dlc-docker run -d -p 2351:8888 -e USER_HOME=$HOME/DeepLabCut --name DeepLabCut dlc_username/dlcdocker
 ```
